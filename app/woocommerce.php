@@ -14,7 +14,7 @@ function addDiv($thing) {
 
  function testWoo($thing) {
 	 echo $thing;?>
- <?php } 
+ <?php }
 
 add_filter('woocommerce_account_navigation', 'testWoo');
 
@@ -25,7 +25,7 @@ if ( ! function_exists( 'understrap_woocommerce_support' ) ) {
 	 */
 	function understrap_woocommerce_support() {
 		add_theme_support( 'woocommerce' );
-		
+
 		// Add New Woocommerce 3.0.0 Product Gallery support
 		add_theme_support( 'wc-product-gallery-lightbox' );
 		add_theme_support( 'wc-product-gallery-zoom' );
@@ -128,7 +128,7 @@ function understrap_wc_form_field_args( $args, $key, $value = null ) {
 
 //Don't display title on sidebar widget for archive pages
 
-add_filter('widget_title','hide_title'); 
+add_filter('widget_title','hide_title');
 function hide_title($t)
 {
     return null;
@@ -137,7 +137,7 @@ function hide_title($t)
 
 
 add_action( 'woocommerce_thankyou', 'custom_woocommerce_auto_complete_order' );
-function custom_woocommerce_auto_complete_order( $order_id ) { 
+function custom_woocommerce_auto_complete_order( $order_id ) {
     if ( ! $order_id ) {
         return;
     }
@@ -147,7 +147,7 @@ function custom_woocommerce_auto_complete_order( $order_id ) {
 }
 
 
- 
+
  function wooc_extra_register_fields() {?>
  <p class="form-row form-row-wide">
 	<label for="reg_billing_phone"><?php _e( 'Company Name', 'woocommerce' ); ?></label>
@@ -162,7 +162,7 @@ function custom_woocommerce_auto_complete_order( $order_id ) {
 	<input type="text" class="input-text" name="billing_last_name" id="reg_billing_last_name" value="<?php if ( ! empty( $_POST['billing_last_name'] ) ) esc_attr_e( $_POST['billing_last_name'] ); ?>" />
 </p>
 <div class="clear"></div>
-<?php 
+<?php
 }
 
 // add_action( 'woocommerce_register_form_start', 'wooc_extra_register_fields' );
@@ -186,4 +186,120 @@ function remove_add_to_cart() {
 }
 
 if(!is_user_logged_in()) remove_add_to_cart();
+
+
+function get_breadcrumbs() {
+    try {
+        $args = array(
+            'posts_per_page' => -1,
+            'tax_query' => $tax_array,
+            'post_type' => 'product',
+            'orderby' => 'title',
+        );
+
+        $catIdForBackground = get_term_by('slug', $last, 'product_cat')->term_id;
+
+        // get the thumbnail id using the queried category term_id
+        $thumbnail_id = get_woocommerce_term_meta( $catIdForBackground, 'thumbnail_id', true );
+
+        // get the image URL
+        $image = wp_get_attachment_url( $thumbnail_id );
+
+        $hasImage = 'style="background: url(' . $image . ') no-repeat center center fixed;"';
+
+        $background = $image ? $hasImage : "";
+
+        include(locate_template('./loop-templates/content-cat-header.php'));
+
+	}
+
+	catch(\Exception $e) {
+		include( get_query_template( '404' ) );
+		return;
+	}
+}
+
+
+function buildArgs() {
+    global $wp_query;
+
+    $pprscat = urldecode($wp_query->query['product_cat']);
+    $pprscats = explode("/", $pprscat);
+    $tax_array = array(
+        'relation' => 'AND'
+    );
+    foreach($pprscats as $cat) {
+        array_push($tax_array, array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => $cat
+        ));
+    }
+    unset($cat);
+    $args = array(
+        'posts_per_page' => -1,
+        'tax_query' => $tax_array,
+        'post_type' => 'product',
+        'orderby' => 'title',
+    );
+    $the_query = new WP_Query( $args);
+    $products = [];
+    foreach($the_query->posts as $post) {
+        $current = wc_get_product( $post->ID );
+        if($current->is_visible() && $current->is_in_stock()) {
+            array_push($products, $current);
+        }
+    }
+return $products;
+}
+
+
+add_action('get_category_breadcrumb', function() {
+    global $wp_query;
+    $args =  $wp_query->query;
+    try {
+		if(isset($wp_query->query['product_cat'])) {
+			$pprscat = urldecode($wp_query->query['product_cat']);
+			$pprscats = explode("/", $pprscat);
+			$tax_array = array(
+				'relation' => 'AND',
+				array(
+					'taxonomy' => 'product_visibility',
+					'field'    => 'name',
+					'terms'    => 'exclude-from-catalog',
+					'operator' => 'NOT IN',
+				)
+			);
+
+
+			$last = $pprscats[count($pprscats) - 1];
+			$title = get_term_by('slug', $last, 'product_cat')->name;
+			$breadcrumb = "";
+			$cateogries = end($pprscats);
+			foreach($pprscats as $cat) {
+				array_push($tax_array, array(
+					'taxonomy' => 'product_cat',
+					'field' => 'slug',
+					'terms' => $cat
+				));
+				$term = get_term_by('slug', $cat, 'product_cat');
+					if(!$term) throw new Exception('No category available');
+				$id = $term->term_id;
+				$name = $term->name;
+				$category_link = get_term_link($id);
+				if($cat != $last) {
+					$breadcrumb .= '<a href="' . $category_link . '">' . $name . "</a> / ";
+				} else {
+					$breadcrumb .= $name;
+				}
+            }
+            echo $breadcrumb;
+			unset($cat);
+		}
+    }
+    catch(\Exception $e) {
+		include( get_query_template( '404' ) );
+		return;
+	}
+});
 

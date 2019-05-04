@@ -248,11 +248,7 @@ $purple: #6a01a3;
     font-weight: bold;
   }
 
-  &__price .amount {
-    font-family: $secondary-font;
-    color: $gray;
-    font-size: 1.4rem;
-  }
+
 
   &_qty {
     font-size: 16px;
@@ -807,7 +803,7 @@ $purple: #6a01a3;
     list-style-type: none;
     background: $nav-background;
     border-bottom: 1px lightgray solid;
-    
+
     @media #{$uptotablet} {
       display: none;
     }

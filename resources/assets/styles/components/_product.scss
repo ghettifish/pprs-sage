@@ -1,0 +1,38 @@
+.pprs-product {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  background: #fff;
+  cursor: pointer;
+  &__image-wrapper {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+  }
+  &__image {
+    border: none;
+  }
+  &__details {
+    padding: 8px;
+  }
+  &__title {
+    font-family: $primary-font;
+    font-size: 1.2rem;
+    text-align: center;
+    color: $purple100;
+
+    @media screen and (max-width: 1024px){
+      font-size: 1rem;
+    }
+  }
+  &__price {
+    text-align: center;
+    color: $purple80;
+    font-size: .8rem;
+    span {
+      color: $purple80;
+      font-size: .8rem;
+    }
+
+  }
+}

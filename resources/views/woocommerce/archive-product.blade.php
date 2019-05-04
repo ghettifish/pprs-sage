@@ -14,13 +14,13 @@ the readme will list any important changes.
 @extends('layouts.app')
 
 @section('content')
+<div class="archive-product">
   @php
-    do_action('get_header', 'shop');
-    do_action('woocommerce_before_main_content');
+    $tax_array = buildArgs();
   @endphp
 
   <header class="woocommerce-products-header">
-    <h1>{!!$say_ass tesst!!}</h1>
+    {!!do_action('get_category_breadcrumb');!!}
     @if(apply_filters('woocommerce_show_page_title', true))
       <h1 class="woocommerce-products-header__title page-title">{!! woocommerce_page_title(false) !!}</h1>
     @endif
@@ -29,8 +29,17 @@ the readme will list any important changes.
       do_action('woocommerce_archive_description');
     @endphp
   </header>
+  <div class="row">
+      @if($tax_array)
+        @foreach($tax_array as $product)
+          @include('partials.product', ['product'=>$product])
+        @endforeach
+      @else
+        <p>No products available</p>
+      @endif
+  </div>
 
-  @if(woocommerce_product_loop())
+  {{-- @if(woocommerce_product_loop())
     @php
       do_action('woocommerce_before_shop_loop');
       woocommerce_product_loop_start();
@@ -54,11 +63,12 @@ the readme will list any important changes.
     @php
       do_action('woocommerce_no_products_found');
     @endphp
-  @endif
+  @endif --}}
 
   @php
     do_action('woocommerce_after_main_content');
     do_action('get_sidebar', 'shop');
     do_action('get_footer', 'shop');
   @endphp
+</div>
 @endsection
