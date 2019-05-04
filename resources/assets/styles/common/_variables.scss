@@ -1,0 +1,294 @@
+/** Import Bootstrap functions */
+@import "~bootstrap/scss/functions";
+
+$theme-colors: (
+  primary: #525ddc
+);
+
+/** Bootstrap navbar fix (https://git.io/fADqW) */
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;
+
+//Fonts
+$primary-font: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua",
+  Georgia, serif;
+$secondary-font: "Montserrat", sans-serif;
+
+//Purples
+$purple20: #b59dc9;
+$purple40: #9873b6;
+$purple60: #7948a1;
+$purple80: #5b1e8d;
+$purple100: #3a0566;
+$purple-dark: #22043b;
+$purple-light: #d4c8de;
+
+//Grays
+$gray100: #323133;
+$gray80: #656366;
+$gray60: #979499;
+$gray40: #c9c6cc;
+$gray20: #e2dfe6;
+
+//Colors
+$primary-color: #6f31cd;
+$secondary-color: rgb(249, 161, 27);
+$tertiary-color: lighten($primary-color, 15%);
+$light: white;
+$dark: darken($primary-color, 90%);
+$gray: adjust-color(darken($primary-color, 60%), $saturation: -40%);
+$lightgray: adjust-color(lighten($primary-color, 25%), $saturation: -40%);
+// $background-purple: #3d245f;
+$background-purple: #6f607d;
+
+$nav-background: #fff;
+$nav-dropdown: #fff;
+$nav-link: $gray100;
+$nav-hover-color: #fff;
+$nav-hover-background: $purple100;
+
+.hover {
+  text-decoration: none;
+  color: $nav-hover-color;
+  background: $nav-hover-background;
+}
+//Gradients
+
+$purpleGradient: linear-gradient(-180deg, #330c3a 0%, #0b030d 100%);
+$lightpurpleGradient: linear-gradient(180deg, #330c3a, #0b030d);
+//Font-sizes
+$xxs: 0.7rem;
+$xs: 0.8rem;
+$s: 1rem;
+$m: 1rem;
+$l: 1.4rem;
+$xl: 3rem;
+$xxl: 4rem;
+
+//Breakpoints
+
+$mobile: "screen and (min-width: 320px) and (max-width: 374px)";
+$iphone: " screen and (min-width: 375px) and (max-width: 424px)";
+$uptoiphone: "screen and (min-width: 320px) and (max-width: 425px)";
+$tablet: "screen and (min-width: 425px) and (max-width: 767px)";
+$uptotablet: "screen and (min-width: 320px) and (max-width: 768px)";
+$laptop: "screen and (min-width: 801px) and (max-width: 1023px)";
+$uptolaptop: "screen and (min-width: 320px) and (max-width: 980px)";
+$desktop: "screen and (min-width: 1024px) and (max-width: 1439px)";
+$desktophd: "screen and (min-width: 2440px)";
+$uptodesktophd: "screen and (min-width: 320px) and (max-width: 2440px)";
+
+@media #{$mobile} {
+  :root {
+    font-size: 10px !important;
+  }
+}
+
+@media #{$iphone} {
+  :root {
+    font-size: 12px !important;
+  }
+}
+
+@media #{$tablet} {
+  :root {
+    font-size: 14px !important;
+  }
+}
+
+@media #{$laptop} {
+  :root {
+    font-size: 14px !important;
+  }
+}
+
+@media #{$desktop} {
+  :root {
+    font-size: 15px !important;
+  }
+}
+
+@media #{$desktophd} {
+  :root {
+    font-size: 20 px !important;
+  }
+}
+
+@mixin text-align {
+  &--center {
+    text-align: center;
+  }
+}
+
+@mixin colors {
+  &--primary {
+    color: $primary-color;
+  }
+
+  &--secondary {
+    color: $secondary-color;
+  }
+
+  &--tertiary {
+    color: $tertiary-color;
+  }
+
+  &--light {
+    color: $light;
+  }
+
+  &--dark {
+    color: $dark;
+  }
+
+  &--lightdark {
+    color: lighten($dark, 40%);
+  }
+}
+
+@mixin fonts {
+  &--primary-font {
+    font-family: $primary-font;
+  }
+
+  &--secondary-font {
+    font-family: $secondary-font;
+  }
+}
+
+@mixin buttons($fontsize) {
+  &--hollow {
+    font-family: $secondary-font;
+    text-transform: uppercase;
+    font-size: $fontsize;
+    padding: ($fontsize/2) $fontsize;
+    border-radius: ($fontsize/4);
+    border: ($fontsize/4) solid $tertiary-color;
+    background-color: transparent;
+    margin-top: $fontsize/2;
+    color: $tertiary-color;
+
+    &:hover {
+      color: $light;
+      background-color: $tertiary-color;
+    }
+  }
+
+  &--full {
+    font-family: $secondary-font;
+    text-transform: uppercase;
+    font-size: $fontsize;
+    padding: ($fontsize/2) $fontsize;
+    background-color: $primary-color;
+    margin-top: $fontsize/2;
+    color: $light;
+    display: inline-block;
+
+    &:hover {
+      background-color: $tertiary-color;
+    }
+  }
+}
+
+.btn-main {
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  border-radius: 3px;
+  font-family: Montserrat, sans-serif;
+  font-size: 12px;
+  padding: 5px 15px;
+  margin-top: 0.5rem;
+  color: #8a73af;
+  display: inline-block;
+  border: 1px solid #8a73af;
+  transition: all 500ms ease-in-out;
+  box-shadow: inset 0 0 0 0 #8a73af;
+
+  &:hover {
+    background: #8a73af;
+    color: #fff;
+    box-shadow: inset 400px 0 0 0 #8a73af;
+  }
+}
+
+.btn-main.disabled {
+  cursor: not-allowed;
+}
+
+.xxs {
+  font-size: $xxs !important;
+
+  @include colors;
+  @include fonts;
+  @include text-align;
+}
+
+.xs {
+  font-size: $xs !important;
+
+  @include colors;
+  @include fonts;
+  @include text-align;
+}
+
+.s {
+  font-size: $s !important;
+
+  @include colors;
+  @include fonts;
+  @include text-align;
+}
+
+.m {
+  font-size: $m !important;
+
+  @include fonts;
+  @include colors;
+  @include text-align;
+}
+
+.l {
+  line-height: 1;
+  font-size: $l !important;
+
+  @include fonts;
+  @include text-align;
+}
+
+.xl {
+  font-size: $xl !important;
+
+  @include fonts;
+  @include colors;
+  @include text-align;
+}
+
+.xxl {
+  font-size: $xxl !important;
+
+  @include fonts;
+  @include colors;
+  @include text-align;
+}
+
+//Buttons
+
+// Forms
+
+.input-text {
+  border-radius: 2px;
+  border: 1px solid $lightgray;
+
+  &:focus {
+    outline: $primary-color auto 5px;
+    outline-color: $primary-color;
+    outline-style: auto;
+    outline-width: 5px;
+  }
+}
+//Colors
+
+.purple {
+  color: $background-purple;
+}

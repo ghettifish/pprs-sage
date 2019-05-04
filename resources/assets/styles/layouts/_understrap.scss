@@ -1,0 +1,1143 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $secondary-font;
+}
+
+.woocommerce-input-wrapper {
+  display: block;
+  width: 100%;
+}
+
+.woocommerce-info {
+  .woocommerce-privacy-policy-link {
+    color: $purple;
+  }
+
+  .showcoupon {
+    color: $purple;
+  }
+}
+
+/*
+* Use existing Bootstrap 4 classes and
+* variables to extend - override CF7 style
+*
+* Useful CF7 classes:
+* .wpcf7 the wrapper element
+* .wpcf7-form
+* .wpcf7-form-control
+* .wpcf7-text
+* .wpcf7-email
+* .wpcf7-textarea
+* .wpcf7-submit
+*/
+
+// keep a max width in case it is just the form and nothing else
+// we do not want a form spanning whole page
+.wpcf7 {
+  max-width: 600px;
+  margin: 0 auto !important;
+
+  // all inputs except radios and checkboxes inherit from form-control
+  input[type="text"],
+  input[type="search"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="range"],
+  input[type="date"],
+  input[type="month"],
+  input[type="week"],
+  input[type="time"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="color"],
+  input[type="email"],
+  input[type="file"],
+  input[type="submit"],
+  select,
+  textarea {
+    @extend .form-control;
+  }
+
+  // submit button, inherit .btn and .btn-outline-primary classes.
+  input[type="submit"] {
+    @extend .btn;
+    @extend .btn-outline-primary;
+  }
+
+  .wpcf7-form {
+    // set paragraphs to behave like divs with class .form-group
+    p {
+      @extend .form-group;
+    }
+
+    // let labels be 100%
+    label {
+      width: 100%;
+    }
+  }
+
+  // not valid tip for each control
+  .wpcf7-not-valid-tip {
+    color: theme-color("danger");
+  }
+
+  // validation errors ourput bottom of form
+  .wpcf7-validation-errors {
+    @extend .form-control;
+
+    color: theme-color("danger");
+    border: 1px solid $gray-200;
+  }
+}
+
+.footer-wrapper {
+  background: black;
+}
+
+.site-info {
+  color: white !important;
+  font-family: $secondary-font;
+}
+
+a {
+  color: $purple;
+
+  &:hover {
+    color: darken($purple, 10%);
+  }
+}
+
+.home {
+  &__content {
+    padding: 5vh 0;
+    background: white;
+  }
+}
+
+// .site-main {
+//     padding: 50px;
+// }◊
+
+$purple: #6a01a3;
+
+.navigation {
+  & > li > a {
+    text-decoration: none;
+    color: black;
+    font-weight: 100;
+    font-size: 16px;
+
+    &:hover {
+      color: $purple;
+    }
+  }
+
+  &__reg {
+    padding: 15px 0;
+    font-size: 10px;
+  }
+
+  &__top {
+    padding: 15px 0;
+    font-size: 10px;
+    text-align: center;
+  }
+
+  &__col {
+    text-align: left;
+  }
+
+  &__parent {
+    padding: 15px;
+  }
+
+  &__1 > li {
+    display: block;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 0 5px;
+  }
+
+  &__brand img {
+    max-width: 450px;
+  }
+}
+
+// Container for hover image to display
+.right-col {
+  position: absolute;
+  visibility: hidden;
+  right: 0;
+  z-index: 100;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(256, 256, 256, 0.9),
+    rgba(256, 256, 256, 0.9)
+  );
+  background-size: cover;
+}
+//Adjust Indentation on sub lists
+.my-sub-menu1 {
+  padding-left: 5px;
+}
+
+// //Class applies when top level item's are hovered
+.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.img__aragonite {
+  background: url("https://images-na.ssl-images-amazon.com/images/I/61MPraABiqL._SX425_.jpg");
+  background-size: cover;
+}
+
+.img__arrowheads {
+  background: url("http://www.arrowheadshop.com/wp-content/uploads/2017/05/arrowheads.jpg");
+  background-size: cover;
+}
+
+.img__amethyst {
+  background: url("https://images-na.ssl-images-amazon.com/images/I/71WVYrWviOL._SX425_.jpg");
+  background-size: cover;
+}
+
+.regmenu .my-sub-menu0 {
+  text-align: left;
+  padding: 10px 5px;
+  position: absolute;
+  visibility: hidden;
+  background: purple;
+  z-index: 100;
+  display: block;
+
+  .navigation__1 a {
+    background-color: initial;
+  }
+}
+
+.navbar-brand {
+  width: 25%;
+}
+
+.navbar-toggler {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-family: $secondary-font;
+
+  @media #{$uptotablet} {
+    display: block;
+  }
+}
+
+.pprs-product {
+  &_title {
+    font-family: $secondary-font;
+    font-size: calc(16px + (32 - 16) * ((100vw - 320px) / (2560 - 320)));
+    font-weight: bold;
+  }
+
+  &__price .amount {
+    font-family: $secondary-font;
+    color: $gray;
+    font-size: 1.4rem;
+  }
+
+  &_qty {
+    font-size: 16px;
+    float: none !important;
+    font-family: $secondary-font;
+
+    & > input {
+      @extend .input-text;
+
+      margin-bottom: 60px;
+    }
+
+    &-label {
+      margin-right: 5px;
+      border: none;
+    }
+  }
+
+  &_btn {
+    @extend .btn-main;
+  }
+
+  &_sku-wrapper {
+    color: $gray;
+    font-family: $secondary-font;
+    font-size: 12px;
+    display: block;
+  }
+
+  &_sku {
+    font-weight: bold;
+  }
+
+  &_categories {
+    font-size: 24px;
+  }
+
+  &_dropdown {
+    background-color: initial;
+    border: 1px solid $lightgray;
+    border-radius: 0 !important;
+    color: $lightgray;
+    padding: 5px 2px 5px 0;
+    width: auto;
+    font-family: $secondary-font;
+
+    &:focus {
+      outline: $primary-color auto 5px;
+      outline-color: $primary-color;
+      outline-style: auto;
+      outline-width: 5px;
+    }
+  }
+
+  &_summary {
+    @media (min-width: 769px) {
+      width: 80%;
+    }
+
+    width: 100%;
+    background: #fff;
+    padding: 5%;
+    position: sticky;
+    top: 10vh;
+    margin: auto;
+  }
+
+  &_entry-summary {
+    padding-top: 5vh;
+    // display: flex;
+    //align-items: center;
+    //justify-content: center;
+    //height: 100%;
+  }
+
+  &_description {
+    padding: 5%;
+    background: #fff;
+  }
+
+  &_main {
+    background: #3d245f;
+  }
+
+  &_first-section {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  &_single-title {
+    font-family: $secondary-font;
+    padding: 5% !important;
+    background: white;
+
+    .price .amount {
+      color: white;
+    }
+  }
+
+  &__individual {
+    background: #fff;
+  }
+
+  &__sidebar {
+    padding-top: 5vh;
+    background: #302d2d;
+  }
+}
+
+.woocommerce-Price-amount {
+  color: $gray;
+  font-family: $secondary-font;
+  font-size: 12px;
+}
+
+.woocommerce ul.products li.product a img {
+  margin: 0;
+}
+
+.related {
+  color: #3d245f;
+  font-weight: bold;
+  background: white;
+  margin-top: 30px;
+  padding: 15px;
+
+  & > ul.products {
+    margin-top: 50px;
+  }
+}
+
+.woocommerce-message {
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: $secondary-font;
+  position: sticky;
+  top: 25px;
+  z-index: 100;
+  border-top-color: $primary-color;
+
+  &::before {
+    content: "\e015";
+    color: $purple;
+  }
+}
+
+.woocommerce-product-gallery {
+  width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.wc-forward {
+  background-color: $primary-color !important;
+  font-family: $secondary-font !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 1 1 1px 1px rgba(0, 0, 0, 0.5) !important;
+  padding: 10px 15px !important;
+  font-size: 16px !important;
+  transition: all ease-in-out 150ms !important;
+
+  &:hover {
+    cursor: pointer !important;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 2 2 1px 1px rgba(0, 0, 0, 0.5) !important;
+    background-color: lighten($primary-color, 10%) !important;
+  }
+}
+
+.woocommerce-products-header__title {
+  color: white !important;
+}
+
+.pprs-archive {
+  &__header {
+    background-color: black;
+    padding: 5vw;
+    width: 100%;
+    background-size: cover;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      background-image: $lightpurpleGradient;
+      opacity: 0.7;
+    }
+  }
+
+  &__products {
+    background: white;
+    min-height: 50vh;
+
+    &-wrapper {
+      flex-wrap: wrap;
+      display: flex;
+
+      @media screen and (min-width: 600px) {
+        padding: 5vh;
+        padding-top: 0;
+      }
+
+      li {
+        list-style: none;
+
+        @media screen and (max-width: 420px) {
+          flex: 1 0 100%;
+        }
+
+        @media screen and (min-width: 421px) and (max-width: 870px) {
+          flex: 1 0 45%;
+        }
+
+        @media screen and (min-width: 871px) {
+          flex: 1 0 26%;
+          margin: 4vh;
+          max-width: 26%;
+        }
+      }
+    }
+  }
+
+  &__title {
+    position: relative;
+    z-index: 10;
+    color: white !important;
+  }
+
+  &__breadcrumb {
+    position: relative;
+    z-index: 10;
+    color: white !important;
+  }
+
+  &__list-item {
+    list-style-type: none;
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    padding: 5vh;
+  }
+
+  &__page-title {
+    padding: 5vh;
+
+    & h2 {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.assistive-text {
+  display: none;
+}
+
+.pprs-search {
+  font-family: $secondary-font;
+  min-width: 450px;
+
+  &__wrapper {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.pprs-slider {
+  &__slide {
+    min-height: 50vh;
+    display: flex !important;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__text {
+    font-family: $primary-font;
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.71);
+  }
+}
+// This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here.
+.wrapper {
+  padding: 0 !important;
+  background-color: $background-purple;
+}
+
+// Woo Commerce
+
+.woo {
+  &__right {
+    padding: 0 10%;
+    background-color: white;
+  }
+  &__clear {
+    padding: 0 10%;
+
+    .add-to-cart-container a {
+      background: none !important;
+      border: none;
+      text-align: left;
+      padding-left: 0;
+      border-radius: 0;
+      width: 50%;
+      text-transform: uppercase;
+      @extend .xs;
+      @extend .xs--secondary-font;
+      &:hover {
+        color: $primary-color;
+        border-bottom: 2px solid $primary-color;
+      }
+    }
+  }
+}
+.product {
+  background: white;
+}
+.content-area {
+  background: white;
+  width: 100%;
+}
+
+//Featured Products
+.feature {
+  &__product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 3vmax;
+    width: 100%;
+    margin: auto;
+    text-align: left;
+    border-radius: 2px;
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+  }
+  &__img {
+    width: 100%;
+    margin: 3vmax;
+  }
+  &__title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #484848;
+  }
+  &__definition {
+    font-size: 12px;
+  }
+  &__btn {
+    @extend .btn-main;
+  }
+}
+
+.event {
+  background: #fff;
+  border-radius: 3px;
+  padding: 25px;
+  margin-bottom: 25px;
+  width: 100%;
+  &-wrapper {
+    width: 100%;
+    max-width: 650px;
+  }
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  &__title {
+    @extend .m;
+    @extend .m--secondary-font;
+
+    font-weight: bold;
+    color: $gray !important;
+  }
+  &__date {
+    @extend .s;
+    @extend .s--secondary-font;
+
+    font-weight: 100;
+    color: $gray !important;
+  }
+  &__address {
+    @extend .xxs;
+    @extend .xxs--secondary-font;
+
+    color: $gray !important;
+  }
+  &__button {
+    color: $purple !important;
+    text-transform: uppercase;
+    @extend .s;
+    @extend .s--secondary-font;
+    &:hover {
+      text-decoration: none;
+      color: $primary-color !important;
+      border-bottom: 2px solid $primary-color;
+    }
+  }
+}
+
+.purple {
+  color: $purple !important;
+  &:hover {
+    color: $tertiary-color !important;
+  }
+}
+
+.pprs {
+  &contain {
+    max-width: 1400px;
+    margin: auto;
+  }
+  &_header {
+    width: 100% !important;
+    padding: 10vh 5vw;
+    color: white;
+    margin-bottom: 10vh;
+  }
+}
+
+// .wrapper {
+//     min-height: calc(100vh - 56px);
+// }
+
+.modal-open .modal {
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+.woocommerce {
+  &__price {
+    color: gray;
+    font-size: 10px;
+  }
+
+  &-loop-product__title {
+    color: $purple;
+    font-size: 14px !important;
+    font-weight: bold;
+    margin-bottom: 0;
+    &:hover {
+      color: $purple;
+      text-decoration: underline;
+    }
+  }
+  &__no-products {
+    color: #fff;
+    font-size: 18px;
+  }
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-inline-start: 0;
+  }
+  &-section__product {
+    color: blue;
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 0;
+    width: 48%;
+    margin-right: 10px;
+    max-height: 280px;
+    min-height: 250px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 2px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-direction: row;
+      margin-right: 0;
+      margin-top: 25px;
+      width: 100%;
+    }
+  }
+  &-section__product-title h2 {
+    font-weight: bold;
+    font-size: 60px !important;
+  }
+  &-section__text {
+    background: rgba(255, 255, 255, 0.7);
+    padding: 15px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 80px;
+    @media screen and (max-width: 768px) {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__single {
+    padding-top: 50px;
+  }
+  &__pagination {
+    display: flex;
+  }
+}
+
+.products {
+  list-style-type: none;
+}
+
+.registration {
+  &__form-title {
+    width: 100%;
+    display: block;
+    float: left;
+    margin-top: 25px;
+  }
+}
+.main-nav {
+  &__container {
+    background: $nav-background;
+  }
+  &__wrapper {
+    background: $nav-background;
+
+    ul {
+      list-style-type: none;
+    }
+  }
+
+  &--desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0 25px;
+    margin: 0 auto;
+    list-style-type: none;
+    background: $nav-background;
+    border-bottom: 1px lightgray solid;
+    
+    @media #{$uptotablet} {
+      display: none;
+    }
+  }
+  &__item {
+    &--0 {
+      display: flex;
+      align-items: center;
+      height: 50px;
+    }
+    &--1 {
+      width: 100%;
+    }
+  }
+  &__link {
+    &--0 {
+      display: block;
+      font-size: 14px;
+      line-height: 1.3;
+      list-style-type: none;
+      margin-bottom: 5px;
+      text-decoration: none;
+      color: $nav-link;
+      font-family: $secondary-font;
+    }
+    &--1 {
+      background: $nav-dropdown;
+      color: $nav-link;
+      width: 100%;
+      display: inline-block;
+      list-style-type: none;
+      padding: 0 10px;
+      &:hover {
+        @extend .hover;
+      }
+    }
+  }
+  &__sub-menu {
+    &--0 {
+      font-family: $secondary-font;
+      text-align: left;
+      visibility: hidden;
+      position: fixed;
+      z-index: 100;
+      padding: 0 0 10px 0;
+      border-radius: 0 0 5px 5px;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+      background: $nav-dropdown;
+    }
+    &--1 {
+      visibility: hidden;
+      position: absolute;
+    }
+    &--show {
+      visibility: visible;
+    }
+  }
+  &__minerals {
+    font-size: 10px;
+    text-align: center;
+    & > ul.my-sub-menu0 {
+      display: flex;
+      font-family: $secondary-font;
+      flex-direction: row;
+      justify-content: space-between;
+      position: fixed;
+      z-index: 95;
+      background-image: $purpleGradient;
+      padding: 25px;
+      margin-left: -25px;
+      width: 70%;
+      visibility: hidden;
+    }
+  }
+}
+.header {
+  &__cart {
+    @extend .main-nav__link--0;
+  }
+  &__search-icon {
+    cursor: pointer;
+    &:hover {
+      color: $purple;
+    }
+  }
+  &__search-bar {
+    display: none;
+    padding: 2vh;
+  }
+}
+
+.col-nav {
+  &__col {
+    margin-right: 50px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__sub-menu {
+    &--0 {
+      display: flex;
+      font-family: $secondary-font;
+      flex-direction: row;
+      justify-content: space-between;
+      position: absolute;
+      z-index: 95;
+      background: $nav-dropdown;
+      padding: 25px;
+      margin-left: -25px;
+      border-radius: 0 0 5px 5px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+      visibility: hidden;
+    }
+    &--1 {
+      padding: 0;
+    }
+    &--show {
+      visibility: visible;
+    }
+  }
+  &__item {
+    &--0 {
+      display: flex;
+      align-items: center;
+      height: 50px;
+    }
+
+    &--2 {
+      line-height: 1;
+    }
+  }
+  &__link {
+    &--0 {
+      display: block;
+      font-size: 14px;
+      line-height: 1.3;
+      list-style-type: none;
+      margin-bottom: 5px;
+      width: 100%;
+      text-decoration: none;
+      font-family: $secondary-font;
+      color: $nav-link;
+    }
+    &--1 {
+      color: $nav-link;
+      font-size: $xs;
+      font-weight: bold;
+      width: 100%;
+      display: inline-block;
+      border-bottom: 1px solid $gray40;
+      &:hover {
+        @extend .hover;
+      }
+    }
+    &--2 {
+      font-size: $s;
+      padding: 5px;
+      color: $nav-link;
+      display: block;
+      &:hover {
+        @extend .hover;
+      }
+    }
+  }
+}
+
+.tumbled-stone {
+  margin-top: 30px;
+}
+
+.page {
+  &__wrapper {
+    padding: 2vw;
+    background: #322240;
+  }
+  &__content {
+    padding: calc(2vw + 10px);
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: black;
+  }
+  &__title {
+    padding: 5px 2vw;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    bottom: 0;
+    color: white;
+    width: 100%;
+  }
+}
+// Some basic padding for all wrappers
+
+
+// Reset hero wrapper padding to 0
+#wrapper-hero {
+  padding: 0 !important;
+}
+
+// Adding basic WordPress classes to pass the WordPress.org tests
+.sticky,
+.gallery-caption,
+.bypostauthor {
+  font-size: inherit;
+}
+
+// Separate sticky wrapper from main content
+.wrapper#wrapper-sticky {
+  border-bottom: 1px solid $gray-300;
+}
+
+// Adding some contrast background color to footer full widget
+#wrapper-footer-full,
+#wrapper-static-hero {
+  background-color: $gray-200;
+}
+
+// Necessary WP classes
+.wp-caption {
+  font-size: inherit;
+}
+
+.wp-caption-text {
+  font-size: inherit;
+}
+
+.screen-reader-text {
+  font-size: inherit;
+}
+
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em;
+}
+
+.aligncenter {
+  margin: 0 auto;
+}
+
+// Post design
+.entry-footer span {
+  padding-right: 10px;
+}
+
+//Woocommerce product gallery slider width fix
+figure.woocommerce-product-gallery__wrapper {
+  max-width: inherit !important;
+}
+
+// Limit featured image size to 100%
+img.wp-post-image,
+article img,
+figure,
+img,
+#secondary img {
+  max-width: 100%;
+  height: auto;
+}
+
+// Skip to content link
+a.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+}
+
+// Reset Jumbotron default margin
+.jumbotron {
+  margin-bottom: 0;
+}
+
+// Dropdown translation
+.navbar-dark .navbar-nav .dropdown-menu .nav-link {
+  display: block;
+  width: 100%; // For `<button>`s
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  clear: both;
+  font-weight: $font-weight-normal;
+  color: $dropdown-link-color !important;
+  text-align: inherit; // For `<button>`s
+  white-space: nowrap; // prevent links from randomly breaking onto new lines
+  background: none; // For `<button>`s
+  border: 0; // For `<button>`s
+
+  @include hover-focus {
+    color: $dropdown-link-hover-color !important;
+    text-decoration: none;
+    background-color: $dropdown-link-hover-bg;
+  }
+
+  &.active,
+  &:active {
+    color: $dropdown-link-active-color !important;
+    text-decoration: none;
+    background-color: $dropdown-link-active-bg;
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $dropdown-link-disabled-color !important;
+    background-color: transparent;
+    // Remove CSS gradients if they're enabled
+    @if $enable-gradients {
+      background-image: none;
+    }
+  }
+}
+
+.navbar-light .navbar-brand a {
+  color: $navbar-light-active-color;
+
+  @include hover-focus {
+    color: $navbar-light-active-color;
+  }
+}
+
+.navbar-dark .navbar-brand a {
+  color: $navbar-dark-active-color;
+
+  @include hover-focus {
+    color: $navbar-dark-active-color;
+  }
+}
