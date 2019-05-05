@@ -523,22 +523,6 @@ $purple: #6a01a3;
     justify-content: flex-end;
   }
 }
-
-.pprs-slider {
-  &__slide {
-    min-height: 50vh;
-    display: flex !important;
-    align-items: center;
-    width: 100%;
-  }
-
-  &__text {
-    font-family: $primary-font;
-    font-size: 3rem;
-    color: white;
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.71);
-  }
-}
 // This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here.
 .wrapper {
   padding: 0 !important;
@@ -779,106 +763,6 @@ $purple: #6a01a3;
     margin-top: 25px;
   }
 }
-.main-nav {
-  &__container {
-    background: $nav-background;
-  }
-  &__wrapper {
-    background: $nav-background;
-
-    ul {
-      list-style-type: none;
-    }
-  }
-
-  &--desktop {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1440px;
-    padding: 0 25px;
-    margin: 0 auto;
-    list-style-type: none;
-    background: $nav-background;
-    border-bottom: 1px lightgray solid;
-
-    @media #{$uptotablet} {
-      display: none;
-    }
-  }
-  &__item {
-    &--0 {
-      display: flex;
-      align-items: center;
-      height: 50px;
-    }
-    &--1 {
-      width: 100%;
-    }
-  }
-  &__link {
-    &--0 {
-      display: block;
-      font-size: 14px;
-      line-height: 1.3;
-      list-style-type: none;
-      margin-bottom: 5px;
-      text-decoration: none;
-      color: $nav-link;
-      font-family: $secondary-font;
-    }
-    &--1 {
-      background: $nav-dropdown;
-      color: $nav-link;
-      width: 100%;
-      display: inline-block;
-      list-style-type: none;
-      padding: 0 10px;
-      &:hover {
-        @extend .hover;
-      }
-    }
-  }
-  &__sub-menu {
-    &--0 {
-      font-family: $secondary-font;
-      text-align: left;
-      visibility: hidden;
-      position: fixed;
-      z-index: 100;
-      padding: 0 0 10px 0;
-      border-radius: 0 0 5px 5px;
-      box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
-      background: $nav-dropdown;
-    }
-    &--1 {
-      visibility: hidden;
-      position: absolute;
-    }
-    &--show {
-      visibility: visible;
-    }
-  }
-  &__minerals {
-    font-size: 10px;
-    text-align: center;
-    & > ul.my-sub-menu0 {
-      display: flex;
-      font-family: $secondary-font;
-      flex-direction: row;
-      justify-content: space-between;
-      position: fixed;
-      z-index: 95;
-      background-image: $purpleGradient;
-      padding: 25px;
-      margin-left: -25px;
-      width: 70%;
-      visibility: hidden;
-    }
-  }
-}
 .header {
   &__cart {
     @extend .main-nav__link--0;
@@ -895,80 +779,7 @@ $purple: #6a01a3;
   }
 }
 
-.col-nav {
-  &__col {
-    margin-right: 50px;
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-  &__sub-menu {
-    &--0 {
-      display: flex;
-      font-family: $secondary-font;
-      flex-direction: row;
-      justify-content: space-between;
-      position: absolute;
-      z-index: 95;
-      background: $nav-dropdown;
-      padding: 25px;
-      margin-left: -25px;
-      border-radius: 0 0 5px 5px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-      visibility: hidden;
-    }
-    &--1 {
-      padding: 0;
-    }
-    &--show {
-      visibility: visible;
-    }
-  }
-  &__item {
-    &--0 {
-      display: flex;
-      align-items: center;
-      height: 50px;
-    }
 
-    &--2 {
-      line-height: 1;
-    }
-  }
-  &__link {
-    &--0 {
-      display: block;
-      font-size: 14px;
-      line-height: 1.3;
-      list-style-type: none;
-      margin-bottom: 5px;
-      width: 100%;
-      text-decoration: none;
-      font-family: $secondary-font;
-      color: $nav-link;
-    }
-    &--1 {
-      color: $nav-link;
-      font-size: $xs;
-      font-weight: bold;
-      width: 100%;
-      display: inline-block;
-      border-bottom: 1px solid $gray40;
-      &:hover {
-        @extend .hover;
-      }
-    }
-    &--2 {
-      font-size: $s;
-      padding: 5px;
-      color: $nav-link;
-      display: block;
-      &:hover {
-        @extend .hover;
-      }
-    }
-  }
-}
 
 .tumbled-stone {
   margin-top: 30px;

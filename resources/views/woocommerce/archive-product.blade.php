@@ -19,11 +19,19 @@ the readme will list any important changes.
     $tax_array = buildArgs();
   @endphp
 
-  <header class="woocommerce-products-header">
-    {!!do_action('get_category_breadcrumb');!!}
-    @if(apply_filters('woocommerce_show_page_title', true))
-      <h1 class="woocommerce-products-header__title page-title">{!! woocommerce_page_title(false) !!}</h1>
-    @endif
+  <header class="container-fluid archive-product__header  text-center" style="{!!
+    get_archive_header()
+    !!}">
+    <div class="archive-product__text-wrapper">
+      <div class="col-12">
+        @if(apply_filters('woocommerce_show_page_title', true))
+          <h1 class="archive-product__title">{!! woocommerce_page_title(false) !!}</h1>
+        @endif
+      </div>
+      <div class="col-12">
+        {!!do_action('get_category_breadcrumb');!!}
+      </div>
+    </div>
 
     @php
       do_action('woocommerce_archive_description');

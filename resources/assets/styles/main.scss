@@ -12,6 +12,20 @@
 // @import "~some-node-module";
 @import "~animate-sass/animate";
 
+// Import slick
+@import "~slick-carousel/slick/slick.scss";
+@import "~slick-carousel/slick/slick-theme.scss";
+// .slick-slider .slick-track,
+// .slick-slider .slick-list
+// {
+// -webkit-transform: translate3d(0, 0, 0);
+// -moz-transform: translate3d(0, 0, 0);
+// -ms-transform: translate3d(0, 0, 0);
+// -o-transform: translate3d(0, 0, 0);
+// transform: translate3d(0, 0, 0);
+// transition-delay: 10ms;
+// }
+
 /** Import theme styles */
 @import "common/global";
 @import "common/animate";
@@ -21,6 +35,8 @@
 @import "components/wp-classes";
 @import "components/slicktheme";
 @import "components/product";
+@import "components/slider";
+@import "components/navigation";
 @import "layouts/header";
 @import "layouts/archive-product";
 @import "layouts/sidebar";

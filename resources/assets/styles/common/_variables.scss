@@ -9,10 +9,20 @@ $theme-colors: (
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
 
+
+@font-face
+{
+font-family: "Poppins";
+src:
+url("../../fonts/Poppins/Poppins-Regular.ttf") format("truetype")
+}
+
 //Fonts
-$primary-font: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua",
-  Georgia, serif;
-$secondary-font: "Montserrat", sans-serif;
+$primary-font: "Poppins", helvetica, sans-serif; 
+$secondary-font: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua",
+Georgia, serif;
+
+
 
 //Purples
 $purple20: #b59dc9;
@@ -41,9 +51,9 @@ $lightgray: adjust-color(lighten($primary-color, 25%), $saturation: -40%);
 // $background-purple: #3d245f;
 $background-purple: #6f607d;
 
-$nav-background: #fff;
+$nav-background: rgba(49,31,71,0.83);
 $nav-dropdown: #fff;
-$nav-link: $gray100;
+$nav-link: #fff;
 $nav-hover-color: #fff;
 $nav-hover-background: $purple100;
 
@@ -195,7 +205,7 @@ $uptodesktophd: "screen and (min-width: 320px) and (max-width: 2440px)";
   position: relative;
   z-index: 1;
   border-radius: 3px;
-  font-family: Montserrat, sans-serif;
+  font-family: $primary-font;
   font-size: 12px;
   padding: 5px 15px;
   margin-top: 0.5rem;

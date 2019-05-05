@@ -245,7 +245,7 @@ function buildArgs() {
     $the_query = new WP_Query( $args);
     $products = [];
     foreach($the_query->posts as $post) {
-        $current = wc_get_product( $post->ID );
+        $current = wc_get_product($post->ID);
         if($current->is_visible() && $current->is_in_stock()) {
             array_push($products, $current);
         }
@@ -253,6 +253,21 @@ function buildArgs() {
 return $products;
 }
 
+function get_archive_header(){
+	global $wp_query;
+	$args =  $wp_query->query;
+	$pprscat = urldecode($wp_query->query['product_cat']);
+	$pprscats = explode("/", $pprscat);
+	$category = end($pprscats);
+	$selectedCategory = get_term_by( 'slug', $category, 'product_cat' );
+	$thumbnail_id = get_woocommerce_term_meta( $selectedCategory->term_id, 'thumbnail_id', true );
+	$image = wp_get_attachment_url( $thumbnail_id ); 
+	if($image) {
+		$returnStyle = "background-image: url($image); color: white;";
+		return $returnStyle;
+	}
+	return;	
+}
 
 add_action('get_category_breadcrumb', function() {
     global $wp_query;
@@ -276,23 +291,25 @@ add_action('get_category_breadcrumb', function() {
 			$title = get_term_by('slug', $last, 'product_cat')->name;
 			$breadcrumb = "";
 			$cateogries = end($pprscats);
-			foreach($pprscats as $cat) {
-				array_push($tax_array, array(
-					'taxonomy' => 'product_cat',
-					'field' => 'slug',
-					'terms' => $cat
-				));
-				$term = get_term_by('slug', $cat, 'product_cat');
-					if(!$term) throw new Exception('No category available');
-				$id = $term->term_id;
-				$name = $term->name;
-				$category_link = get_term_link($id);
-				if($cat != $last) {
-					$breadcrumb .= '<a href="' . $category_link . '">' . $name . "</a> / ";
-				} else {
-					$breadcrumb .= $name;
+			if(count($pprscats) > 1) {
+				foreach($pprscats as $cat) {
+					array_push($tax_array, array(
+						'taxonomy' => 'product_cat',
+						'field' => 'slug',
+						'terms' => $cat
+					));
+					$term = get_term_by('slug', $cat, 'product_cat');
+						if(!$term) throw new Exception('No category available');
+					$id = $term->term_id;
+					$name = $term->name;
+					$category_link = get_term_link($id);
+					if($cat != $last) {
+						$breadcrumb .= '<a href="' . $category_link . '">' . $name . "</a> / ";
+					} else {
+						$breadcrumb .= $name;
+					}
 				}
-            }
+			}
             echo $breadcrumb;
 			unset($cat);
 		}

@@ -4,4 +4,19 @@
     display: flex;
     flex-wrap: wrap;
   }
+  &__header {
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    padding: 5%;
+  }
+  &__text-wrapper {
+    background: rgba(0,0,0,0.8);
+    padding: 1% 0;
+  }
+  &__title {
+    padding-top: 2rem;
+    font-size: 4rem;
+    font-family: $primary-font;
+  }
 }

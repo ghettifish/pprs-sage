@@ -1,16 +1,19 @@
 .pprs-product {
-  display: flex;
-  flex-direction: column;
-  justify-content:space-between;
   background: #fff;
+  margin: 5px;
+  border-radius: 3px;
   cursor: pointer;
   &__image-wrapper {
     display: flex;
     justify-content: center;
     overflow: hidden;
+    border-radius: 3px 0 0 3px;
   }
   &__image {
-    border: none;
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    padding: 50%;
   }
   &__details {
     padding: 8px;
@@ -20,18 +23,21 @@
     font-size: 1.2rem;
     text-align: center;
     color: $purple100;
-
+    padding: 10px;
     @media screen and (max-width: 1024px){
-      font-size: 1rem;
+      font-size: 18px;
     }
   }
   &__price {
+    font-family: $primary-font;
     text-align: center;
-    color: $purple80;
-    font-size: .8rem;
+    color: $gray80;
+    font-size: 1rem;
     span {
-      color: $purple80;
-      font-size: .8rem;
+      font-weight: bold;
+      font-family: $primary-font;
+      color: $gray80;
+      font-size: 1rem;
     }
 
   }
