@@ -22,33 +22,38 @@ add_filter( 'wp_nav_menu_items', 'nav_actions' );
 
 <header class="container-fluid main-nav__container" id="banner">
   <div class="row">
-    <div class="col-md-4 text-left">
+    <div class="col-sm-6 col-md-3  text-left d-flex align-items-center">
       @if(has_custom_logo()) 
-      <?php the_custom_logo(); ?>
+        {!! the_custom_logo(); !!}
       @endif
     </div>
-    <div class="col-md-8 text-right">         
-      <ul class="secondary-nav">
-        @if(is_user_logged_in()) 
-        <li class="secondary-nav__text">
-          <a href="{!!wc_get_page_permalink('cart')!!}">Cart | <i class="fas fa-shopping-cart"></i>{!!cart_count()!!}</a>
-        </li>
-        <li class="secondary-nav__text">
-            <a href="{!!wc_get_page_permalink('myaccount')!!}">My Account</a>
-        </li>
-        <li class="secondary-nav__text">
-            <a href="{!!wp_logout_url( wc_get_page_permalink('myaccount') );!!}">Logout</a>
-        </li>
-        @else
-        <li class="secondary-nav__text">
-          <a href="{!!wc_get_page_permalink('myaccount')!!}">Login/Register <i class="fas fa-user"></i></a>
-        </li>
-        @endif
-      </ul>
+    <div class="col-md-9 col-sm-6 text-right">
+      <div class="col-md-12">
+        <ul class="secondary-nav">
+          @if(is_user_logged_in()) 
+          <li class="secondary-nav__text">
+            <a href="{!!wc_get_page_permalink('cart')!!}">Cart | <i class="fas fa-shopping-cart"></i>{!!cart_count()!!}</a>
+          </li>
+          <li class="secondary-nav__text">
+              <a href="{!!wc_get_page_permalink('myaccount')!!}">My Account</a>
+          </li>
+          <li class="secondary-nav__text">
+              <a href="{!!wp_logout_url( wc_get_page_permalink('myaccount') );!!}">Logout</a>
+          </li>
+          @else
+          <li class="secondary-nav__text">
+            <a href="{!!wc_get_page_permalink('myaccount')!!}">Login/Register <i class="fas fa-user"></i></a>
+          </li>
+          @endif
+        </ul>
+        <li class="secondary-nav__text"><button class="secondary-nav__menu" id="openMenu">Menu</button>
+
+        <button class="secondary-nav__close" id="closeMenu">
+            Close
+          </button>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 justify-content-center">
       <nav class="nav-primary main-nav__wrapper">
         @if (has_nav_menu('primary'))
           {!! wp_nav_menu(
@@ -78,7 +83,7 @@ add_filter( 'wp_nav_menu_items', 'nav_actions' );
           !!}
         @endif
       </nav>
-    </div>
+    </div>       
   </div>
 
   <div class="header__search-bar" id="searchBar">
