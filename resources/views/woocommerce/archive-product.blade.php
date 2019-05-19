@@ -19,7 +19,7 @@ the readme will list any important changes.
     $tax_array = buildArgs();
   @endphp
 
-  <header class="container-fluid archive-product__header  text-center" style="{!!
+  <header class="container archive-product__header  text-center" style="{!!
     get_archive_header()
     !!}">
     <div class="archive-product__text-wrapper">
@@ -37,14 +37,16 @@ the readme will list any important changes.
       do_action('woocommerce_archive_description');
     @endphp
   </header>
-  <div class="row">
-      @if($tax_array)
-        @foreach($tax_array as $product)
-          @include('partials.product', ['product'=>$product])
-        @endforeach
-      @else
-        <p>No products available</p>
-      @endif
+  <div class="container">
+    <div class="row">
+        @if($tax_array)
+          @foreach($tax_array as $product)
+            @include('partials.product', ['product'=>$product])
+          @endforeach
+        @else
+          <p>No products available</p>
+        @endif
+    </div>
   </div>
 
   {{-- @if(woocommerce_product_loop())

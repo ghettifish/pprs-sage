@@ -17,44 +17,55 @@ jQuery(document).ready(() => {
 
   }, 3000);
 
+  function isBrowserMoreThan(width) {
+    let browser = document.body.getBoundingClientRect();
+    return browser.width > width;
+
+  }
 
 
   //Dropdown for minerals
   function showMinerals(object) {
-    let $dropdown = jQuery(object)
-      .find('.col-nav__sub-menu--0')
-      .stop(true, true);
-    // if($dropdown.hasClass('slideOutLeft')){
-    //     $dropdown.removeClass('slideOutLeft');
-    // }
 
-    // let $column = jQuery(object)
-    // .find('.col-nav__col')
-    // .stop(true, true);
+    if (isBrowserMoreThan(768)) {
+      let $dropdown = jQuery(object)
+        .find('.col-nav__sub-menu--0')
+        .stop(true, true);
+      // if($dropdown.hasClass('slideOutLeft')){
+      //     $dropdown.removeClass('slideOutLeft');
+      // }
 
-    // $column.addClass('animated faster slideInDown');
-    $dropdown.addClass('show');
+      // let $column = jQuery(object)
+      // .find('.col-nav__col')
+      // .stop(true, true);
 
-    $dropdown.one(
-      'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-      function () {
-        $dropdown.removeClass('show');
-      }
-    );
+      // $column.addClass('animated faster slideInDown');
+      $dropdown.addClass('show');
+      $dropdown.one(
+        'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+        function () {
+          $dropdown.removeClass('show');
+        }
+      );
+    }
   }
 
   function hideMinerals(object) {
-    let $dropdown = jQuery(object).find('.col-nav__sub-menu--0');
+    if (isBrowserMoreThan(768)) {
+      let $dropdown = jQuery(object).find('.col-nav__sub-menu--0');
 
-    // $dropdown.addClass('animated faster slideOutUp');
-    $dropdown.removeClass('show');
-    $dropdown.one(
-      'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
-      function () {
-        $dropdown.removeClass('show');
-      }
-    );
+      // $dropdown.addClass('animated faster slideOutUp');
+      $dropdown.removeClass('show');
+      $dropdown.one(
+        'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',
+        function () {
+          $dropdown.removeClass('show');
+        }
+      );
+    }
   }
+
+
   jQuery('.minerals').hover(
     function () {
       showMinerals(this);
@@ -66,16 +77,23 @@ jQuery(document).ready(() => {
 
   jQuery('.main-nav__item--0').hover(
     function () {
-      let test = jQuery(this).find('.main-nav__sub-menu--0');
-      console.log(test);
-      test.addClass('main-nav__sub-menu--show');
+
+      if (isBrowserMoreThan(768)) {
+        let test = jQuery(this).find('.main-nav__sub-menu--0');
+        console.log(test);
+        test.addClass('main-nav__sub-menu--show');
+      }
     },
     function () {
-      jQuery(this)
-        .find('.main-nav__sub-menu--0')
-        .removeClass('main-nav__sub-menu--show');
+
+      if (isBrowserMoreThan(768)) {
+        jQuery(this)
+          .find('.main-nav__sub-menu--0')
+          .removeClass('main-nav__sub-menu--show');
+      }
     }
   );
+
 
   //Handle searching on site
   let searchVisible = false;

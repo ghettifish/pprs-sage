@@ -22,14 +22,14 @@ add_filter( 'wp_nav_menu_items', 'nav_actions' );
 
 <header class="container-fluid main-nav__container" id="banner">
   <div class="row">
-    <div class="col-sm-6 col-md-3  text-left d-flex align-items-center">
+    <div class="col-xs-6 col-sm-6 col-md-3  text-left d-flex align-items-center">
       @if(has_custom_logo()) 
         {!! the_custom_logo(); !!}
       @endif
     </div>
-    <div class="col-md-9 col-sm-6 text-right">
+    <div class="col-md-9 col-sm-6 text-right d-flex align-items-center">
       <div class="col-md-12">
-        <ul class="secondary-nav">
+        <ul class="secondary-nav secondary-nav--hide" >
           @if(is_user_logged_in()) 
           <li class="secondary-nav__text">
             <a href="{!!wc_get_page_permalink('cart')!!}">Cart | <i class="fas fa-shopping-cart"></i>{!!cart_count()!!}</a>

@@ -1,5 +1,5 @@
 .archive-product {
-  padding: 0 3vw;
+  padding: 0 10vw;
   &__row {
     display: flex;
     flex-wrap: wrap;
@@ -8,15 +8,20 @@
     background-size: cover;
     background-position: center; 
     background-repeat: no-repeat;
-    padding: 5%;
   }
   &__text-wrapper {
-    background: rgba(0,0,0,0.8);
+    //background: rgba(0,0,0,0.8);
     padding: 0;
   }
   &__title {
+    color: #4d3180;
+    text-align: left;
     padding-top: 2rem;
     font-size: 4rem;
     font-family: $primary-font;
   }
+}
+
+.product-breadcrumb {
+  text-align: left;
 }

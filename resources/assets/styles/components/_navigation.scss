@@ -24,6 +24,7 @@
         background: $nav-background;
         position: absolute;
         z-index: 100;
+        top: 0;
     }
     &__wrapper {  
       @media screen and (max-width: 768px) {
@@ -230,9 +231,17 @@
     padding: 10px 0;
     display: flex;
     justify-content: flex-end;
+    &--hide {
+      @media screen and (max-width: 768px) {
+        //display: none;
+        display: none;
+      }
+    }
     &__text {
         list-style-type: none;
         margin-left: 15px;
+        display: flex;
+        justify-content: flex-end;
         & a {
             font-family: $primary-font;
             font-size: 10px;
@@ -246,17 +255,26 @@
       right: 0;
       top: 0;
       color: white;
-      padding: 25px;
+      padding: 18px;
+      padding-right: 30px;
       position: fixed;
       z-index: 102;
       border: none;
       display: none;
       background: none;
+      font-family: $primary-font;
+
     }
     &__menu {
       color: white;
       border: none;
       background: none;
+      display: none;
+      font-family: $primary-font;
+      @media screen and (max-width: 768px) {
+        //display: none;
+        display: block;
+      }
     }
    
 }

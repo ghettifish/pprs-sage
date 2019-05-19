@@ -289,7 +289,7 @@ add_action('get_category_breadcrumb', function() {
 
 			$last = $pprscats[count($pprscats) - 1];
 			$title = get_term_by('slug', $last, 'product_cat')->name;
-			$breadcrumb = "";
+			$breadcrumb = "<div class='product-breadcrumb'>";
 			$cateogries = end($pprscats);
 			if(count($pprscats) > 1) {
 				foreach($pprscats as $cat) {
@@ -309,6 +309,8 @@ add_action('get_category_breadcrumb', function() {
 						$breadcrumb .= $name;
 					}
 				}
+				$breadcrumb .= '</div>';
+
 			}
             echo $breadcrumb;
 			unset($cat);
