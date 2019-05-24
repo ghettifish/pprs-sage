@@ -40,7 +40,7 @@
 				{{do_action( 'woocommerce_login_form_end' )}}
 
 			</form>
-			<p class="login-form__register">Don't have an account yet? <a href="#" id="toggleToRegister">{{_e('Register for an account')}}</a></p>
+			<p class="login-form__register">Don't have an account yet? <a href="#register-form" id="toggleToRegister">{{_e('Register for an account')}}</a></p>
 
 	</div>
 	@if( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' )

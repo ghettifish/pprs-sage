@@ -1,8 +1,15 @@
+function showRegister(){
+  document.getElementById('register').style.display = 'block';
+  document.getElementById('login').style.display = 'none';
+}
+
 export default {
     init() {
-      jQuery('#toggleToRegister').click(function(){
-        document.getElementById('register').style.display = 'block';
-        document.getElementById('login').style.display = 'none';
+      if(jQuery(location).attr('href').includes('#register-form')) {
+        showRegister();
+      }
+      jQuery('#toggleToRegister').click(() => {
+        showRegister();
       });
       jQuery('#toggleToLogin').click(function(){
         document.getElementById('login').style.display = 'block';
