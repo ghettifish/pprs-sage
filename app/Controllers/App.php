@@ -28,6 +28,9 @@ class App extends Controller
         if (is_404()) {
             return __('Not Found', 'sage');
         }
+        if(is_page('my-account') && !is_user_logged_in()){
+            return;
+        }
         return get_the_title();
     }
 }

@@ -6,13 +6,11 @@ jQuery(document).ready(() => {
   //   return jQuery('#desktopNavigation').css('display') === 'flex';
   // }
   var navbar = document.getElementById('desktopNavigation');
-
-  let offset;
-  offset = navbar.getBoundingClientRect();
+  let offset = navbar.getBoundingClientRect();
+  console.log('Height:' + document.body.clientHeight);
   jQuery('.main-nav__sub-menu--0').css('top', offset.bottom);
   jQuery('.col-nav__sub-menu--0').css('top', offset.height);
   setTimeout(function () {
-    console.log(offset);
     //var bottom = -navbar.height();
 
   }, 3000);

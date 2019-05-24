@@ -1,0 +1,12 @@
+.registration {
+    display: none;
+    &__form-title {
+      width: 100%;
+      display: block;
+      float: left;
+      margin-top: 25px;
+    }
+    &__shipping-address {
+      display: none;
+    }
+  }

@@ -25,7 +25,6 @@ function pprc_get_account_fields() {
 }
 function pprc_print_user_frontend_fields() {
 	$fields = pprc_get_account_fields();
-
 	foreach ( $fields as $key => $field_args ) {
 		woocommerce_form_field( $key, $field_args );
 	}
@@ -119,7 +118,8 @@ function stop_auto_complete_order( $order_id ) {
 if(!is_admin())
 {
 
-function pprs_extra_register_fields() {
+
+function pprs_register_personal_info() {
 	global $woocommerce;
 	$checkout = $woocommerce->checkout();
 	$woocommerce->checkout()->enqueue_scripts;
@@ -130,13 +130,7 @@ function pprs_extra_register_fields() {
 		}
 		$count ++;
 	endforeach;
-	?>
 
-	<!-- <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
-		<label for="reg_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?> <span class="required">*</span></label>
-		<input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" value="<?php echo ( ! empty( $_POST['email'] ) ) ? esc_attr( wp_unslash( $_POST['email'] ) ) : ''; ?>" />
-	</p> -->
-	<?php
 	$args = array(
     "label"             => "Phone",
     "required"          => true,
@@ -153,7 +147,18 @@ function pprs_extra_register_fields() {
 	foreach ( $fields as $key => $field_args ) {
 		woocommerce_form_field( $key, $field_args );    
 	}
-	?>
+}
+add_action( 'woocommerce_register_form_personal', 'pprs_register_personal_info' );
+
+function pprs_register_billing_info() {
+	global $woocommerce;
+	$checkout = $woocommerce->checkout();?>
+
+	<!-- <p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
+		<label for="reg_email"><?php esc_html_e( 'Email address', 'woocommerce' ); ?> <span class="required">*</span></label>
+		<input type="email" class="woocommerce-Input woocommerce-Input--text input-text" name="email" id="reg_email" value="<?php echo ( ! empty( $_POST['email'] ) ) ? esc_attr( wp_unslash( $_POST['email'] ) ) : ''; ?>" />
+	</p> -->
+
 	<h3 class="registration__form-title"><?php _e( 'Billing Address', 'woocommerce' ); ?></h3>
 	<?php
 	foreach ($checkout->checkout_fields['billing'] as $key => $field) :
@@ -162,17 +167,17 @@ function pprs_extra_register_fields() {
 		}
 	endforeach;
 	?>
+
 	<div class="shipping_address">
-
-		<h3 class="registration__form-title">
-			<?php _e( 'Shipping Address', 'woocommerce' ); ?>
-		</h3>
-
 		<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
 			<input id="ship-to-different-address-checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox input-checkbox" <?php checked( apply_filters( 'woocommerce_ship_to_different_address_checked', 'shipping' === get_option( 'woocommerce_ship_to_destination' ) ? 1 : 0 ), 1 ); ?> type="checkbox" name="ship_to_different_address" value="1" /> <span><?php _e( 'Ship to a different address?', 'woocommerce' ); ?></span>
 		</label>
 
 		<div class="registration__shipping-address" id="shippingAddress">
+			<h3 class="registration__form-title">
+				<?php _e( 'Shipping Address', 'woocommerce' ); ?>
+			</h3>
+
 			<?php
 			foreach ($checkout->checkout_fields['shipping'] as $key => $field) :
 				if ( isset( $field['country_field'], $checkout->checkout_fields['shipping'][ $field['country_field'] ] ) ) {
@@ -182,7 +187,6 @@ function pprs_extra_register_fields() {
 			endforeach;
 			?>
 		</div>
-		
 	</div>
 		<?php
 
@@ -190,7 +194,7 @@ function pprs_extra_register_fields() {
 
 
 
-add_action( 'woocommerce_register_form_start', 'pprs_extra_register_fields' );
+add_action( 'woocommerce_register_form_billing', 'pprs_register_billing_info' );
 
 // Custom function to save Usermeta or Billing Address of registered user
 function pprs_save_address($user_id)
@@ -203,18 +207,22 @@ function pprs_save_address($user_id)
 			$new_key = explode('billing_',$key);
 			update_user_meta( $user_id, $new_key[1], $_POST[$key] );
 		}
-
-		if( empty($_POST['ship_to_different_address']) ){
-			$key_parts = explode('_', $key,2 );
-			$shipping_key = 'billing_'.$key_parts[1];
-			if( 'billing' === $key_parts[0] ){
-				update_user_meta( $user_id, $key, $_POST[$key] );
-            }elseif('shipping' === $key_parts[0]){
-				update_user_meta( $user_id, $key, $_POST[$shipping_key] );
-            }
-        }else{
+		if(strpos($key, 'billing_') !== false) {
 			update_user_meta( $user_id, $key, $_POST[$key] );
-        }
+		}
+		if(strpos($key, 'shipping_') !== false) {
+			if( empty($_POST['ship_to_different_address']) ){
+				$key_parts = explode('_', $key,2 );
+				$shipping_key = 'billing_'.end($key_parts);
+				if( 'billing' === $key_parts[0] ){
+					update_user_meta( $user_id, $key, $_POST[$key] );
+				}elseif('shipping' === $key_parts[0]){
+					update_user_meta( $user_id, $key, $_POST[$shipping_key] );
+				}
+			} else {
+				update_user_meta( $user_id, $key, $_POST[$key] );
+			}
+		}
 	endforeach;
 
 }

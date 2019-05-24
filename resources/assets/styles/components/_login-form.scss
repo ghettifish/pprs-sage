@@ -1,0 +1,26 @@
+.login-form {
+    padding-top: 50px;
+    & form {
+        background: white;
+        padding: 25px;
+        box-shadow: 1px 0 6px 1px #0000001a;
+    }
+    &__btn {
+        width: 100%;
+        @extend .btn-main;
+    }
+    &__checkbox {
+        padding-left: 20px;
+    }
+
+    &__register {
+        margin-top: 15px;
+        font-family: $primary-font;
+    }
+    .woocommerce-form__label {
+        padding-left: 0;
+    }
+    .woocommerce-LostPassword  {
+        margin-bottom: 0;
+    }
+}

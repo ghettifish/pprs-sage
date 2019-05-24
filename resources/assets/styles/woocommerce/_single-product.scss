@@ -1,0 +1,41 @@
+.product_title {
+    font-size: 2rem;
+    line-height: 1.4;
+}
+
+.pprs-product_summary {
+    @media (min-width: 769px) {
+        width: 80%;
+      }
+  
+      width: 100%;
+      background: #fff;
+      padding: 5%;
+      position: sticky;
+      top: 10vh;
+      margin: auto;
+    .price {
+        .amount {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-family: $primary-font;
+            font-weight: bold;
+        }
+    }
+    .sku_wrapper {
+        margin-top: 15px;
+        display: block;
+        font-weight: bold;
+        .sku {
+            font-weight: 100;
+        }
+    }
+    .posted_in {
+        font-weight: bold;
+        a {
+            font-weight: 100;
+        }
+    }
+}
+
+

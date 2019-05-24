@@ -29,17 +29,23 @@
 /** Import theme styles */
 @import "common/global";
 @import "common/animate";
+
 @import "components/buttons";
 @import "components/comments";
 @import "components/forms";
 @import "components/wp-classes";
 @import "components/slicktheme";
-@import "components/product";
 @import "components/slider";
 @import "components/navigation";
 @import "components/events";
+@import "components/registration";
+@import "components/login-form";
+
+@import "woocommerce/product";
+@import "woocommerce/single-product";
+@import "woocommerce/archive-product";
+
 @import "layouts/header";
-@import "layouts/archive-product";
 @import "layouts/sidebar";
 @import "layouts/footer";
 @import "layouts/pages";

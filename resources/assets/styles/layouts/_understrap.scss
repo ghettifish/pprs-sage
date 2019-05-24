@@ -1,13 +1,3 @@
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: $secondary-font;
-}
-
 .woocommerce-input-wrapper {
   display: block;
   width: 100%;
@@ -241,122 +231,6 @@ $purple: #6a01a3;
   }
 }
 
-.pprs-product {
-  &_title {
-    font-family: $secondary-font;
-    font-size: calc(16px + (32 - 16) * ((100vw - 320px) / (2560 - 320)));
-    font-weight: bold;
-  }
-
-
-
-  &_qty {
-    font-size: 16px;
-    float: none !important;
-    font-family: $secondary-font;
-
-    & > input {
-      @extend .input-text;
-
-      margin-bottom: 60px;
-    }
-
-    &-label {
-      margin-right: 5px;
-      border: none;
-    }
-  }
-
-  &_btn {
-    @extend .btn-main;
-  }
-
-  &_sku-wrapper {
-    color: $gray;
-    font-family: $secondary-font;
-    font-size: 12px;
-    display: block;
-  }
-
-  &_sku {
-    font-weight: bold;
-  }
-
-  &_categories {
-    font-size: 24px;
-  }
-
-  &_dropdown {
-    background-color: initial;
-    border: 1px solid $lightgray;
-    border-radius: 0 !important;
-    color: $lightgray;
-    padding: 5px 2px 5px 0;
-    width: auto;
-    font-family: $secondary-font;
-
-    &:focus {
-      outline: $primary-color auto 5px;
-      outline-color: $primary-color;
-      outline-style: auto;
-      outline-width: 5px;
-    }
-  }
-
-  &_summary {
-    @media (min-width: 769px) {
-      width: 80%;
-    }
-
-    width: 100%;
-    background: #fff;
-    padding: 5%;
-    position: sticky;
-    top: 10vh;
-    margin: auto;
-  }
-
-  &_entry-summary {
-    padding-top: 5vh;
-    // display: flex;
-    //align-items: center;
-    //justify-content: center;
-    //height: 100%;
-  }
-
-  &_description {
-    padding: 5%;
-    background: #fff;
-  }
-
-  &_main {
-    background: #3d245f;
-  }
-
-  &_first-section {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  &_single-title {
-    font-family: $secondary-font;
-    padding: 5% !important;
-    background: white;
-
-    .price .amount {
-      color: white;
-    }
-  }
-
-  &__individual {
-    background: #fff;
-  }
-
-  &__sidebar {
-    padding-top: 5vh;
-    background: #302d2d;
-  }
-}
 
 .woocommerce-Price-amount {
   color: $gray;
@@ -708,17 +582,7 @@ $purple: #6a01a3;
   list-style-type: none;
 }
 
-.registration {
-  &__form-title {
-    width: 100%;
-    display: block;
-    float: left;
-    margin-top: 25px;
-  }
-  &__shipping-address {
-    display: none;
-  }
-}
+
 .header {
   &__cart {
     @extend .main-nav__link--0;

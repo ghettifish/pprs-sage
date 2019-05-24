@@ -1,0 +1,142 @@
+.pprs-product {
+  &_title {
+    font-family: $secondary-font;
+    font-size: calc(16px + (32 - 16) * ((100vw - 320px) / (2560 - 320)));
+    font-weight: bold;
+  }
+  &_qty {
+    font-size: 16px;
+    float: none !important;
+    font-family: $secondary-font;
+
+    & > input {
+      @extend .input-text;
+
+      margin-bottom: 60px;
+    }
+
+    &-label {
+      margin-right: 5px;
+      border: none;
+    }
+  }
+
+  &_btn {
+    @extend .btn-main;
+  }
+
+  &_sku-wrapper {
+    color: $gray;
+    font-family: $secondary-font;
+    font-size: 12px;
+    display: block;
+  }
+
+  &_sku {
+    font-weight: bold;
+  }
+
+  &_categories {
+    font-size: 24px;
+  }
+
+  &_dropdown {
+    background-color: initial;
+    border: 1px solid $lightgray;
+    border-radius: 0 !important;
+    color: $lightgray;
+    padding: 5px 2px 5px 0;
+    width: auto;
+    font-family: $secondary-font;
+
+    &:focus {
+      outline: $primary-color auto 5px;
+      outline-color: $primary-color;
+      outline-style: auto;
+      outline-width: 5px;
+    }
+  }
+  &_entry-summary {
+    padding-top: 5vh;
+    // display: flex;
+    //align-items: center;
+    //justify-content: center;
+    //height: 100%;
+  }
+
+  &_description {
+    padding: 5%;
+    background: #fff;
+  }
+
+  &_main {
+    background: #3d245f;
+  }
+
+  &_first-section {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  &_single-title {
+    font-family: $secondary-font;
+    padding: 5% !important;
+    background: white;
+
+    .price .amount {
+      color: white;
+    }
+  }
+
+  &__individual {
+    background: #fff;
+  }
+
+  &__sidebar {
+    padding-top: 5vh;
+    background: #302d2d;
+  }
+  
+  background: #fff;
+  margin: 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  &__image-wrapper {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 3px 0 0 3px;
+  }
+  &__image {
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat;
+    padding: 50%;
+  }
+  &__details {
+    padding: 8px;
+  }
+  &__title {
+    font-family: $primary-font;
+    font-size: 1.2rem;
+    text-align: center;
+    color: $purple100;
+    padding: 10px;
+    @media screen and (max-width: 1024px){
+      font-size: 18px;
+    }
+  }
+  &__price {
+    font-family: $primary-font;
+    text-align: center;
+    color: $gray80;
+    font-size: 1rem;
+    span {
+      font-weight: bold;
+      font-family: $primary-font;
+      color: $gray80;
+      font-size: 1rem;
+    }
+
+  }
+}

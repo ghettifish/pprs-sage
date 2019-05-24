@@ -1,6 +1,11 @@
-@php function cart_count() {
+@php 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+function cart_count() {
 	$cartcount = WC()->cart->get_cart_contents_count();
-	if($cartcount > 0) { return $cartcount; };
+	if(isset($cartcount) && $cartcount > 0) { return $cartcount; };
 }
 
 // Filter wp_nav_menu() to add additional links and other output

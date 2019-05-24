@@ -26,12 +26,12 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new BrowserSyncPlugin({
-      target,
-      open: config.open,
-      proxyUrl: config.proxyUrl,
-      watch: config.watch,
-      delay: 500,
-    }),
+    // new BrowserSyncPlugin({
+    //   target,
+    //   open: config.open,
+    //   proxyUrl: config.proxyUrl,
+    //   watch: config.watch,
+    //   delay: 500,
+    // }),
   ],
 };
