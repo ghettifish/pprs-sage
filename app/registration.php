@@ -162,9 +162,16 @@ function pprs_register_billing_info() {
 	<h3 class="registration__form-title"><?php _e( 'Billing Address', 'woocommerce' ); ?></h3>
 	<?php
 	foreach ($checkout->checkout_fields['billing'] as $key => $field) :
-		if( $key === 'billing_address_1' || $key === 'billing_address_2' || $key === 'billing_state' || $key === 'billing_country' || $key === 'billing_postcode' ) {
+
+		if($key === 'billing_address_1' 
+		|| $key === 'billing_address_2' 
+		|| $key === 'billing_state' 
+		|| $key === 'billing_city' 
+		|| $key === 'billing_country' 
+		|| $key === 'billing_postcode') {
 			woocommerce_form_field( $key, $field, $checkout->get_value( $key ) );
 		}
+		
 	endforeach;
 	?>
 
