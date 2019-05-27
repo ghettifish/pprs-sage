@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     class="pprs-search__btn"
     value="{{esc_attr_x( 'Search', 'submit button', 'woocommerce' )}}"
   >
-    {{esc_html_x( 'Search', 'submit button', 'woocommerce' )}}
+  <i class="fas fa-search"></i>
   </button>
 
   <input 

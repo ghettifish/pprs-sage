@@ -2,6 +2,10 @@
 import 'jquery';
 import 'slick-carousel/slick/slick';
 
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import {faShoppingCart, faSearch} from '@fortawesome/free-solid-svg-icons';
+library.add(faShoppingCart, faSearch);
+dom.watch();
 // Import everything from autoload
 import './autoload/**/*'
 

@@ -91,8 +91,4 @@ add_filter( 'wp_nav_menu_items', 'nav_actions' );
       </nav>
     </div>       
   </div>
-
-  <div class="header__search-bar" id="searchBar">
-    {{ get_product_search_form() }}
-  </div>
 </header>
