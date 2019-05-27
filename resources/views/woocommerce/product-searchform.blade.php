@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     type="submit"
     class="pprs-search__btn"
     value="{{esc_attr_x( 'Search', 'submit button', 'woocommerce' )}}"
+    aria-label="search"
   >
   <i class="fas fa-search"></i>
   </button>
