@@ -15,10 +15,11 @@ function nav_actions($items) {
 	$close_a = '">';
 	$close_li='</li>';
     $view_cart = $li . $a . wc_get_page_permalink('cart') . $close_a . __('Cart | ') . '<i class="fas fa-shopping-cart"></i> '. cart_count() . '</a>';
-	$login = $li . $a . wc_get_page_permalink('myaccount') . $close_a . __('Login/Register ') . '<i class="fas fa-user"></i></a>';
-	$search = $li . '<a  href="#" class="main-nav__link--0">Search <i class="fas fa-search header__search-icon" id="toggleSearch"></i></a>' . $close_li;
+  $login = $li . $a . wc_get_page_permalink('myaccount') . $close_a . __('Login/Register ') . '<i class="fas fa-user"></i></a>';
+
+  // $search = $li . '<a  href="#" class="main-nav__link--0">Search <i class="fas fa-search header__search-icon" id="toggleSearch"></i></a>' . $close_li;
 	$action = is_user_logged_in() ? $view_cart : $login ;
-    $items = $items . $search;
+    $items = $items . get_product_search_form(false);
     return $items;
 }
 add_filter( 'wp_nav_menu_items', 'nav_actions' );
@@ -92,6 +93,6 @@ add_filter( 'wp_nav_menu_items', 'nav_actions' );
   </div>
 
   <div class="header__search-bar" id="searchBar">
-    @php get_product_search_form() @endphp
+    {{ get_product_search_form() }}
   </div>
 </header>

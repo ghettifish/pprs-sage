@@ -44,12 +44,12 @@ the readme will list any important changes.
             @include('partials.product', ['product'=>$product])
           @endforeach
         @else
-          <p>No products available</p>
+
         @endif
     </div>
   </div>
 
-  {{-- @if(woocommerce_product_loop())
+  @if(woocommerce_product_loop())
     @php
       do_action('woocommerce_before_shop_loop');
       woocommerce_product_loop_start();
@@ -73,7 +73,7 @@ the readme will list any important changes.
     @php
       do_action('woocommerce_no_products_found');
     @endphp
-  @endif --}}
+  @endif
 
   @php
     do_action('woocommerce_after_main_content');

@@ -200,7 +200,7 @@ function get_breadcrumbs() {
         $catIdForBackground = get_term_by('slug', $last, 'product_cat')->term_id;
 
         // get the thumbnail id using the queried category term_id
-        $thumbnail_id = get_woocommerce_term_meta( $catIdForBackground, 'thumbnail_id', true );
+        $thumbnail_id = get_term_meta( $catIdForBackground, 'thumbnail_id', true );
 
         // get the image URL
         $image = wp_get_attachment_url( $thumbnail_id );
@@ -222,51 +222,54 @@ function get_breadcrumbs() {
 
 function buildArgs() {
     global $wp_query;
-
-    $pprscat = urldecode($wp_query->query['product_cat']);
-    $pprscats = explode("/", $pprscat);
-    $tax_array = array(
-        'relation' => 'AND'
-    );
-    foreach($pprscats as $cat) {
-        array_push($tax_array, array(
-            'taxonomy' => 'product_cat',
-            'field' => 'slug',
-            'terms' => $cat
-        ));
-    }
-    unset($cat);
-    $args = array(
-        'posts_per_page' => -1,
-        'tax_query' => $tax_array,
-        'post_type' => 'product',
-        'orderby' => 'title',
-    );
-    $the_query = new WP_Query( $args);
-    $products = [];
-    foreach($the_query->posts as $post) {
-        $current = wc_get_product($post->ID);
-        if($current->is_visible() && $current->is_in_stock()) {
-            array_push($products, $current);
-        }
-    }
-return $products;
+	if(array_key_exists('product_cat', $wp_query->query)) {
+		$pprscat = urldecode($wp_query->query['product_cat']);
+		$pprscats = explode("/", $pprscat);
+		$tax_array = array(
+			'relation' => 'AND'
+		);
+		foreach($pprscats as $cat) {
+			array_push($tax_array, array(
+				'taxonomy' => 'product_cat',
+				'field' => 'slug',
+				'terms' => $cat
+			));
+		}
+		unset($cat);
+		$args = array(
+			'posts_per_page' => -1,
+			'tax_query' => $tax_array,
+			'post_type' => 'product',
+			'orderby' => 'title',
+		);
+		$the_query = new WP_Query( $args);
+		$products = [];
+		foreach($the_query->posts as $post) {
+			$current = wc_get_product($post->ID);
+			if($current->is_visible() && $current->is_in_stock()) {
+				array_push($products, $current);
+			}
+		}
+	return $products;
+	}
 }
 
 function get_archive_header(){
 	global $wp_query;
-	$args =  $wp_query->query;
-	$pprscat = urldecode($wp_query->query['product_cat']);
-	$pprscats = explode("/", $pprscat);
-	$category = end($pprscats);
-	$selectedCategory = get_term_by( 'slug', $category, 'product_cat' );
-	$thumbnail_id = get_woocommerce_term_meta( $selectedCategory->term_id, 'thumbnail_id', true );
-	$image = wp_get_attachment_url( $thumbnail_id ); 
-	if($image) {
-		$returnStyle = "background-image: url($image); color: white;";
-		return $returnStyle;
-	}
-	return;	
+	if(array_key_exists('product_cat', $wp_query->query)) {
+		$args =  $wp_query->query;
+		$pprscat = urldecode($wp_query->query['product_cat']);
+		$pprscats = explode("/", $pprscat);
+		$category = end($pprscats);
+		$selectedCategory = get_term_by( 'slug', $category, 'product_cat' );
+		$thumbnail_id = get_term_meta( $selectedCategory->term_id, 'thumbnail_id', true );
+		$image = wp_get_attachment_url( $thumbnail_id ); 
+		if($image) {
+			$returnStyle = "background-image: url($image); color: white;";
+			return $returnStyle;
+		}
+		return;
+	};
 }
 
 add_action('get_category_breadcrumb', function() {

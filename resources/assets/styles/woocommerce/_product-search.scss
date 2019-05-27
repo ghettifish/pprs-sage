@@ -1,0 +1,25 @@
+.pprs-search {
+    border-bottom: solid #fff 1px;
+    &__field {
+        background: none;
+        border: none;
+        color: #fff;
+        font-family: $primary-font;
+        &::placeholder {
+            color: rgba(255,255,255, 0.6);
+        }
+    }
+    &__btn {
+        background: none;
+        border: none;
+        font-family: $primary-font;
+        text-transform: uppercase;
+        color: $nav-link;
+        font-size: 12px;
+        &:hover {
+            text-decoration: none;
+            color: #35CDD9;
+        }
+        
+    }
+}
