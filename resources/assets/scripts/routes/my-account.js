@@ -10,10 +10,13 @@ export default {
       }
       jQuery('#toggleToRegister').click(() => {
         showRegister();
+        jQuery('#register .pprs-error').remove();
       });
       jQuery('#toggleToLogin').click(function(){
         document.getElementById('login').style.display = 'block';
         document.getElementById('register').style.display = 'none';
+        jQuery('#login .pprs-error').remove();
+
       });
       jQuery(document).ready(function() {
         jQuery( '#shippingAddress' ).hide();

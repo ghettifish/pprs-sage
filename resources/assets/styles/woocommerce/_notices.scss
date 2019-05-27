@@ -1,0 +1,11 @@
+.pprs-error {
+    font-family: $primary-font;
+    background: none;
+    border-top: none;
+    margin-bottom: 0 !important;
+    padding-left: 1.5em;
+    padding-right: 0;
+    &::before {
+        left: 0;
+    }
+}

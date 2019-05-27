@@ -1,17 +1,17 @@
 {{--
  The View for the WooCommerce Login screen
 --}}
+@php
+$wc_notices = wc_print_notices(true);
+do_action( 'woocommerce_before_customer_login_form' );
 
-
-@php 
-	wc_print_notices();
-	do_action( 'woocommerce_before_customer_login_form' );
 @endphp
+
 <div class="row justify-content-center login-form align-items-center">
 	<div class="col-xs-12 col-md-4 align-self-center" id="login">
 			<h2>{{ _e( 'Login', 'understrap' )}}</h2>
 			<form class="woocommerce-form woocommerce-form-login login-form__form" method="post">
-
+				{!! $wc_notices  !!}
 				{{ do_action( 'woocommerce_login_form_start' )}}
 
 				<p class="woocommerce-form-row woocommerce-form-row--wide form-row form-row-wide">
@@ -51,7 +51,10 @@
 
 
 			<form method="post" class="register ">
+
+
 					{{-- {{do_action( 'woocommerce_register_form_start' )}} --}}
+					{!! $wc_notices !!}
 					<h3><?php _e( 'Personal Info', 'woocommerce' ); ?></h3>	
 					{{do_action( 'woocommerce_login_form_start' )}}
 
