@@ -283,6 +283,10 @@
    
 }
 
+// Compensation for admin bar.
+.admin-bar .main-nav__container {
+  top: 32px;
+}
 
 .mobile-menu {
   &--show {
