@@ -374,7 +374,7 @@ function pprs_new_user_approve_send_approved_email($user_id){
 	ob_start();
 
 	// Get mail template
-	wc_get_template('emails/customer-account-approved.php', array(
+	wc_get_template('views/woocommerce/emails/customer-new-account.php', array(
 		'user_login'    => $user_login,
 		'user_pass'             => $user_pass,
 		'blogname'              => $blogname,
@@ -385,7 +385,7 @@ function pprs_new_user_approve_send_approved_email($user_id){
 	$message = ob_get_clean();
 
 	// Send the mail
-	wc_mail( $user_email, $subject, $message, $headers = "Content-Type: text/htmlrn", $attachments = "" );
+	wc_mail( $user_email, $subject, $message, $headers = "Content-Type: text/htmlrn");
 
 	$customer_orders = wc_get_orders( array(
 		'meta_key' => '_customer_user',
