@@ -18,21 +18,21 @@
     }
     &__title {
       @extend .m;
-      @extend .m--secondary-font;
+      @extend .m--primary-font;
   
       font-weight: bold;
       color: $gray !important;
     }
     &__date {
       @extend .s;
-      @extend .s--secondary-font;
+      @extend .s--primary-font;
   
       font-weight: 100;
       color: $gray !important;
     }
     &__address {
       @extend .xxs;
-      @extend .xxs--secondary-font;
+      @extend .xxs--primary-font;
   
       color: $gray !important;
     }
@@ -40,7 +40,7 @@
       color: $purple !important;
       text-transform: uppercase;
       @extend .s;
-      @extend .s--secondary-font;
+      @extend .s--primary-font;
       &:hover {
         text-decoration: none;
         color: $primary-color !important;
