@@ -38,7 +38,7 @@ add_filter( 'wp_nav_menu_items', 'nav_actions' );
         <ul class="secondary-nav secondary-nav--hide" >
           @if(is_user_logged_in()) 
           <li class="secondary-nav__text">
-            <a href="{!!wc_get_page_permalink('cart')!!}">Cart | <i class="fas fa-shopping-cart"></i>{!!cart_count()!!}</a>
+            <a href="{!!wc_get_page_permalink('cart')!!}">Cart | <i class="fas fa-shopping-cart"></i><span class="secondary-nav__cart-count">{!!cart_count()!!}</span></a>
           </li>
           <li class="secondary-nav__text">
               <a href="{!!wc_get_page_permalink('myaccount')!!}">My Account</a>
