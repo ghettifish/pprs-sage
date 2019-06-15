@@ -12,11 +12,7 @@ function addDiv($thing) {
 	echo "<div>" . $thing . "</div>";
 }
 
- function testWoo($thing) {
-	 echo $thing;?>
- <?php }
 
-add_filter('woocommerce_account_navigation', 'testWoo');
 
 add_action( 'after_setup_theme', 'understrap_woocommerce_support' );
 if ( ! function_exists( 'understrap_woocommerce_support' ) ) {
@@ -125,15 +121,6 @@ function understrap_wc_form_field_args( $args, $key, $value = null ) {
 	} // end switch ($args).
 	return $args;
 }
-
-//Don't display title on sidebar widget for archive pages
-
-add_filter('widget_title','hide_title');
-function hide_title($t)
-{
-    return null;
-}
-
 
 
 add_action( 'woocommerce_thankyou', 'custom_woocommerce_auto_complete_order' );
@@ -324,4 +311,3 @@ add_action('get_category_breadcrumb', function() {
 		return;
 	}
 });
-

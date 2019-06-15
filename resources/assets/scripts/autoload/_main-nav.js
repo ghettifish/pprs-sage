@@ -7,13 +7,16 @@ jQuery(document).ready(() => {
   // }
   var navbar = document.getElementById('desktopNavigation');
   let offset = navbar.getBoundingClientRect();
-  console.log('Height:' + document.body.clientHeight);
-  jQuery('.main-nav__sub-menu--0').css('top', offset.bottom);
+  var banner = document.getElementById('banner');
+
+  jQuery('.main-nav__sub-menu--0').css('top', offset.height);
   jQuery('.col-nav__sub-menu--0').css('top', offset.height);
+  console.log(banner.getBoundingClientRect().height);
   setTimeout(function () {
     //var bottom = -navbar.height();
+    jQuery('.main').css('margin-top',   banner.getBoundingClientRect().height);
 
-  }, 3000);
+  }, 1000);
 
   function isBrowserMoreThan(width) {
     let browser = document.body.getBoundingClientRect();

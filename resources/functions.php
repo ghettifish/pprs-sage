@@ -64,7 +64,8 @@ array_map(function ($file) use ($sage_error) {
 'admin',
 'navwalkers',
 'registration',
-'woocommerce'
+'woocommerce',
+'shortcodes'
 ]);
 
 /**

@@ -11,7 +11,7 @@ function pprc_get_account_fields() {
 	return apply_filters( 'pprc_account_fields', array(
 		'fein' => array(
 			'type'        => 'text',
-			'label'       => __( 'Fein', 'pprc' ),
+			'label'       => __( 'EIN, Resale Certificate, Etc.', 'pprc' ),
 			'required'    => true,
 			'class'       => array('form-row-last'),
 		),
@@ -263,7 +263,7 @@ add_action('woocommerce_created_customer','pprs_save_address');
 		}
 
 		if ( isset( $_POST['fein'] ) && empty( $_POST['fein'] ) ) {
-			$validation_errors->add( 'fein_error', __( 'FEIN is required!', 'woocommerce' ) );
+			$validation_errors->add( 'fein_error', __( 'You must provide a EIN, Resale Certificate, or other proof that you are a wholesaler!', 'woocommerce' ) );
 		}
 
 		if ( isset( $_POST['billing_country'] ) && empty( $_POST['billing_country'] ) ) {

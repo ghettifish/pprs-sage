@@ -80,7 +80,7 @@ add_action('after_setup_theme', function () {
  */
 add_action('widgets_init', function () {
     $config = [
-        'before_widget' => '<section class="widget %1$s %2$s">',
+        'before_widget' => '<section>',
         'after_widget'  => '</section>',
         'before_title'  => '<h3>',
         'after_title'   => '</h3>'
@@ -89,10 +89,40 @@ add_action('widgets_init', function () {
         'name'          => __('Primary', 'sage'),
         'id'            => 'sidebar-primary'
     ] + $config);
+});
+
+/**
+ * Register Footer
+ */
+add_action('widgets_init', function () {
+    $config = [
+        'description' => __( '' ),
+        'before_widget' => '<div class="col-md-4 col-s-12">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="footer__title">',
+        'after_title'   => '</h3>'
+    ];
     register_sidebar([
-        'name'          => __('Footer', 'sage'),
-        'id'            => 'sidebar-footer'
+        'name'          => __('Footer Column 1', 'sage'),
+        'id'            => 'sidebar-footer-col1'
     ] + $config);
+    register_sidebar([
+        'name'          => __('Footer Column 2', 'sage'),
+        'id'            => 'sidebar-footer-col2'
+    ] + $config);
+    register_sidebar([
+        'name'          => __('Footer Column 3', 'sage'),
+        'id'            => 'sidebar-footer-col3'
+    ] + $config);
+    register_sidebar([
+        'name'          => __('Copyright', 'sage'),
+        'id'            => 'sidebar-footer-copyright',
+        'description' => __( '' ),
+        'before_widget' => '<div class="footer__copyright">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="footer__title">',
+        'after_title'   => '</h3>'
+    ]);
 });
 
 /**

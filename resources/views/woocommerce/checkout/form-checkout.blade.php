@@ -47,7 +47,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 	
 		<?php endif; ?>
-
+<div class="row checkout__disclaimer">
+	<?php the_field("disclaimer")?>
+</div>
 <div class="row">
 		<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 

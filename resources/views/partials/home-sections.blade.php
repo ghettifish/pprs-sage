@@ -6,9 +6,15 @@
                 $title_img = get_sub_field('section_image');
                 $section_cats = get_sub_field("section_category");
                 $background_img_link = $background_img['url'];
-                $title_img_link = $title_img['url']?>
+                $title_img_link = $title_img['url'];
+                $style="";
+                if($background_img_link != null){
+                  $style = "background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('$background_img_link')  no-repeat; background-size: cover;";
+                }
+?>
 
-<div class="row py-5 my-5" style="background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('<?php echo $background_img_link ?>')  no-repeat; background-size: cover;">
+
+<div class="row py-5 section" style={{$style}} >
 
   <div class="col-sm-12 col-md-4">
     <div class="feature__product">
@@ -33,7 +39,7 @@
 
   <div class="col">
       <ul class="woocommerce__section">
-        <?php
+        @php
                   $args = array(
                     'post_type'             => 'product',
                     'post_status'           => 'publish',
@@ -55,15 +61,16 @@
                     )
                   );
               $loop = new WP_Query( $args );
-              if ( $loop->have_posts() ) {
-                  while ( $loop->have_posts() ) : $loop->the_post();
-                      wc_get_template_part( 'content', 'product-tile' );
-                  endwhile;
-              } else {
-                  echo __( '<p class="woocommerce__no-products">No products found</p>' );
-              }
-              wp_reset_postdata();
-          ?>
+        @endphp
+          @if ( $loop->have_posts() )
+            @while ( $loop->have_posts() )
+              @php $loop->the_post() @endphp
+              @include('partials.product-tile')                   
+            @endwhile
+          @else
+          {!! __( '<p class="woocommerce__no-products">No products found</p>' )!!}
+          @endif
+          @php wp_reset_postdata() @endphp
       </ul>
   </div>
 

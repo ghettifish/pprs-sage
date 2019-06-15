@@ -7,14 +7,10 @@
     &-wrapper {
       width: 100%;
       max-width: 650px;
+      padding: 40px 0;
     }
     &-container {
-      background: black;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
+      background: #0e0e0e;
     }
     &__title {
       @extend .m;

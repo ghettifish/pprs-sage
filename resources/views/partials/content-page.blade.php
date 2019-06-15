@@ -1,7 +1,7 @@
 <div class="row">
-    <div class="col-12">
+    <div class="col-md-12 col-s-12">
         <div class="pprs-content">
-            @php the_content() @endphp
+            @php(the_content())
         </div>
     </div>
 </div>

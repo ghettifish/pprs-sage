@@ -1,3 +1,11 @@
+
+@font-face
+{
+font-family: "Poppins";
+src:
+url("../fonts/Poppins/Poppins-Regular.ttf") format("truetype")
+}
+
 @import "common/variables";
 
 /** Import everything from autoload */
@@ -40,6 +48,8 @@
 @import "components/events";
 @import "components/registration";
 @import "components/login-form";
+@import "components/sections";
+@import "components/page-header";
 
 @import "woocommerce/product";
 @import "woocommerce/single-product";
@@ -47,6 +57,8 @@
 @import "woocommerce/featured-product";
 @import "woocommerce/product-search";
 @import "woocommerce/notices";
+@import "woocommerce/product-sections";
+@import "woocommerce/checkout";
 
 @import "layouts/header";
 @import "layouts/sidebar";
@@ -55,3 +67,4 @@
 @import "layouts/posts";
 @import "layouts/tinymce";
 @import "layouts/understrap";
+@import "layouts/app";
